@@ -5,6 +5,9 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
   rails:
     build: .
     volumes:
@@ -13,9 +16,10 @@ services:
       - node_modules:/var/www/rails_app/node_modules
     ports:
       - "3000:3000"
+    # environment:
+      # PG_PASSWORD: password
+      # RAILS_ENV: development
     #env_file: .env
-    #environment:
-    #  RAILS_ENV: development
     depends_on:
       - db
 volumes:

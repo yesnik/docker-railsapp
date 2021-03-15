@@ -28,11 +28,9 @@ bundle -v
 
 gem -v
 # 3.2.3
-```
 
-4. Install `rails` gem:
-```ruby
-gem install rails
+rails -v
+# Rails 6.1.3
 ```
 
 5. Create Rails app that will be using Postgres:
