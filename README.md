@@ -35,7 +35,7 @@ gem -v
 gem install rails
 ```
 
-5. It's time to create Rails app:
+5. Create Rails app that will be using Postgres:
 ```bash
 rails new . -d=postgresql
 ```
