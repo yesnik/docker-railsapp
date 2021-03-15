@@ -9,7 +9,7 @@ services:
     build: .
     volumes:
       - ./rails_app:/var/www/rails_app
-      - gem_cache:/usr/local/bundle/gems
+      - gem_cache:/usr/local/bundle
       - node_modules:/var/www/rails_app/node_modules
     ports:
       - "3000:3000"
