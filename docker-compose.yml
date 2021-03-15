@@ -1,14 +1,24 @@
-version: '2'
+version: '3'
 services:
   db:
-    image: postgres
-  web:
-    build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    image: postgres:13
     volumes:
-      - .:/myapp
+      - db_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  rails:
+    build: .
+    volumes:
+      - ./rails_app:/var/www/rails_app
+      - gem_cache:/usr/local/bundle/gems
+      - node_modules:/var/www/rails_app/node_modules
     ports:
       - "3000:3000"
+    #env_file: .env
+    #environment:
+    #  RAILS_ENV: development
     depends_on:
       - db
-
+volumes:
+  gem_cache:
+  db_data:
+  node_modules:
